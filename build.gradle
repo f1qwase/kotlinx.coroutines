@@ -4,6 +4,8 @@
 
 
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
+import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
+import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
 import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension
@@ -390,4 +392,12 @@ extensions.findByType(org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootEx
 // Drop this when node js version become stable
 tasks.withType(org.jetbrains.kotlin.gradle.targets.js.npm.tasks.KotlinNpmInstallTask).configureEach {
     args.add("--ignore-engines")
+}
+
+allprojects {
+    tasks.withType(KotlinJsCompile.class).configureEach {
+        it.kotlinOptions.freeCompilerArgs += "-Xwasm-generate-wat"
+        it.kotlinOptions.freeCompilerArgs += "-Xwasm-enable-array-range-checks"
+        it.kotlinOptions.freeCompilerArgs += "-Xrender-internal-diagnostic-names"
+    }
 }

@@ -6,6 +6,7 @@ package kotlinx.coroutines
 
 import kotlin.test.*
 
+@NoWasmWasi
 class MessageQueueTest {
     private var scheduled = false
     private val processed = mutableListOf<Int>()

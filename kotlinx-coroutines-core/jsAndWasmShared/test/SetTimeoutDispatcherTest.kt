@@ -6,6 +6,7 @@ package kotlinx.coroutines
 
 import kotlin.test.*
 
+@NoWasmWasi
 class SetTimeoutDispatcherTest : TestBase() {
     @Test
     fun testDispatch() = runTest {
