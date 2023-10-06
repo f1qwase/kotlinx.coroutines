@@ -17,6 +17,7 @@ internal actual fun createMainDispatcher(default: CoroutineDispatcher): MainCoro
 
 internal actual fun createDefaultDispatcher(): CoroutineDispatcher = DarwinGlobalQueueDispatcher
 
+@OptIn(BetaInteropApi::class)
 private object DarwinGlobalQueueDispatcher : CoroutineDispatcher() {
     @OptIn(UnsafeNumber::class)
     override fun dispatch(context: CoroutineContext, block: Runnable) {
@@ -37,6 +38,7 @@ private class DarwinMainDispatcher(
 
     override fun isDispatchNeeded(context: CoroutineContext): Boolean = !(invokeImmediately && isMainThread())
 
+    @OptIn(BetaInteropApi::class)
     override fun dispatch(context: CoroutineContext, block: Runnable) {
         autoreleasepool {
             dispatch_async(dispatch_get_main_queue()) {
@@ -105,4 +107,5 @@ private class Timer : DisposableHandle {
     }
 }
 
+@OptIn(BetaInteropApi::class)
 internal actual inline fun platformAutoreleasePool(crossinline block: () -> Unit): Unit = autoreleasepool { block() }
