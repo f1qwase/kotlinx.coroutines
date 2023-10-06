@@ -2,7 +2,7 @@
  * Copyright 2016-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license.
  */
 
-@file:OptIn(ExperimentalContracts::class)
+@file:OptIn(ExperimentalContracts::class, ObsoleteWorkersApi::class)
 package kotlinx.coroutines
 
 import kotlinx.cinterop.*
@@ -33,6 +33,7 @@ import kotlin.native.concurrent.*
  * @param context context of the coroutine. The default value is an implementation of [EventLoop].
  * @param block the coroutine code.
  */
+@OptIn(ExperimentalContracts::class)
 public actual fun <T> runBlocking(context: CoroutineContext, block: suspend CoroutineScope.() -> T): T {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
@@ -62,6 +63,7 @@ public actual fun <T> runBlocking(context: CoroutineContext, block: suspend Coro
     }
 }
 
+@OptIn(ObsoleteWorkersApi::class)
 @ThreadLocal
 private object ThreadLocalKeepAlive {
     /** If any of these checks passes, this means this [Worker] is still used. */

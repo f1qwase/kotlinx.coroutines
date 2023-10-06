@@ -7,7 +7,9 @@ package kotlinx.coroutines
 import kotlin.coroutines.*
 import kotlin.native.concurrent.*
 import kotlin.system.*
+import kotlin.time.*
 
+@OptIn(ObsoleteWorkersApi::class)
 internal actual abstract class EventLoopImplPlatform : EventLoop() {
 
     private val current = Worker.current
