@@ -8,7 +8,6 @@ import kotlinx.coroutines.internal.*
 
 // New 'CompletionHandler` supertype is added compared to the expect declaration.
 // Probably we can add it to JS and common too, to avoid the suppression/opt-in
-@AllowDifferentMembersInActual
 internal actual abstract class CompletionHandlerBase actual constructor() : LockFreeLinkedListNode(), CompletionHandler {
     actual abstract override fun invoke(cause: Throwable?)
 }
@@ -17,7 +16,6 @@ internal actual inline val CompletionHandlerBase.asHandler: CompletionHandler ge
 
 // New 'CompletionHandler` supertype is added compared to the expect declaration.
 // Probably we can add it to JS and common too, to avoid the suppression/opt-in
-@AllowDifferentMembersInActual
 internal actual abstract class CancelHandlerBase actual constructor() : CompletionHandler {
     actual abstract override fun invoke(cause: Throwable?)
 }

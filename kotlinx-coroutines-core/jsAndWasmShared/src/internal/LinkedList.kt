@@ -10,7 +10,6 @@ import kotlinx.coroutines.*
 
 private typealias Node = LinkedListNode
 /** @suppress **This is unstable API and it is subject to change.** */
-@AllowDifferentMembersInActual
 public actual typealias LockFreeLinkedListNode = LinkedListNode
 
 /** @suppress **This is unstable API and it is subject to change.** */

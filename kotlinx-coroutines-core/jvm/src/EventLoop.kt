@@ -8,7 +8,6 @@ import kotlinx.coroutines.Runnable
 import kotlinx.coroutines.scheduling.*
 import kotlinx.coroutines.scheduling.CoroutineScheduler
 
-@AllowDifferentMembersInActual
 internal actual abstract class EventLoopImplPlatform: EventLoop() {
     protected abstract val thread: Thread
 

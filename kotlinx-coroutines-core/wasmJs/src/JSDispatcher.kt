@@ -7,7 +7,6 @@ package kotlinx.coroutines
 import org.w3c.dom.Window
 import kotlin.js.*
 
-@AllowDifferentMembersInActual
 public actual typealias W3CWindow = Window
 
 internal actual fun w3cSetTimeout(window: W3CWindow, handler: () -> Unit, timeout: Int): Int =

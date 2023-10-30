@@ -38,7 +38,6 @@ public abstract class ExecutorCoroutineDispatcher: CoroutineDispatcher(), Closea
 }
 
 @ExperimentalCoroutinesApi
-@AllowDifferentMembersInActual
 public actual typealias CloseableCoroutineDispatcher = ExecutorCoroutineDispatcher
 
 /**

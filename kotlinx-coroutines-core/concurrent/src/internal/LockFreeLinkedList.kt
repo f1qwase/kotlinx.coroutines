@@ -46,7 +46,6 @@ internal val CONDITION_FALSE: Any = Symbol("CONDITION_FALSE")
     "LeakingThis",
 )
 @InternalCoroutinesApi
-@AllowDifferentMembersInActual
 public actual open class LockFreeLinkedListNode {
     private val _next = atomic<Any>(this) // Node | Removed | OpDescriptor
     private val _prev = atomic(this) // Node to the left (cannot be marked as removed)
@@ -56,8 +55,7 @@ public actual open class LockFreeLinkedListNode {
         _removedRef.value ?: Removed(this).also { _removedRef.lazySet(it) }
 
     @PublishedApi
-    @AllowDifferentMembersInActual
-    internal abstract class CondAddOp(
+        internal abstract class CondAddOp(
         @JvmField val newNode: Node
     ) : AtomicOp<Node>() {
         @JvmField var oldNext: Node? = null
@@ -335,7 +333,6 @@ internal fun Any.unwrap(): Node = (this as? Removed)?.ref ?: this as Node
  *
  * @suppress **This is unstable API and it is subject to change.**
  */
-@AllowDifferentMembersInActual
 public actual open class LockFreeLinkedListHead : LockFreeLinkedListNode() {
     public actual val isEmpty: Boolean get() = next === this
 
@@ -356,8 +353,6 @@ public actual open class LockFreeLinkedListHead : LockFreeLinkedListNode() {
     // optimization: because head is never removed, we don't have to read _next.value to check these:
     override val isRemoved: Boolean get() = false
 
-    // fixme replace the suppress with AllowDifferentMembersInActual once stdlib is updated to 1.9.20 https://github.com/Kotlin/kotlinx.coroutines/issues/3846
-    @Suppress("NON_ACTUAL_MEMBER_DECLARED_IN_EXPECT_NON_FINAL_CLASSIFIER_ACTUALIZATION")
     override fun nextIfRemoved(): Node? = null
 
     internal fun validate() {

@@ -6,10 +6,8 @@ package kotlinx.coroutines
 
 import kotlinx.coroutines.scheduling.*
 
-@AllowDifferentMembersInActual
 internal actual typealias SchedulerTask = Task
 
-@AllowDifferentMembersInActual
 internal actual typealias SchedulerTaskContext = TaskContext
 
 @Suppress("EXTENSION_SHADOWED_BY_MEMBER")

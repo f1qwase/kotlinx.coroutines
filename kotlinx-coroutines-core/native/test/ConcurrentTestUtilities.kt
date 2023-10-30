@@ -25,7 +25,6 @@ private object BlackHole {
     var sink = 1
 }
 
-@AllowDifferentMembersInActual
 internal actual typealias SuppressSupportingThrowable = SuppressSupportingThrowableImpl
 
 actual val Throwable.suppressed: Array<Throwable>

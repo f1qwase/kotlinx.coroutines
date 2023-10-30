@@ -54,7 +54,6 @@ public actual typealias TestResult = Unit
  * }
  * ```
  */
-@AllowDifferentMembersInActual
 public actual open class TestBase(private var disableOutCheck: Boolean)  {
 
     actual constructor(): this(false)
