@@ -208,7 +208,7 @@ public class FlowSubscription<T>(
         try {
             consumeFlow()
         } catch (cause: Throwable) {
-            @Suppress("INVISIBLE_MEMBER")
+            @Suppress("INVISIBLE_MEMBER", "INVISIBLE_REFERENCE")
             val unwrappedCause = unwrap(cause)
             if (!cancellationRequested || isActive || unwrappedCause !== getCancellationException()) {
                 try {

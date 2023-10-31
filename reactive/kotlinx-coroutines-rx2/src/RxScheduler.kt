@@ -136,7 +136,7 @@ private fun CoroutineScope.scheduleTask(
     if (delayMillis <= 0) {
         toSchedule.run()
     } else {
-        @Suppress("INVISIBLE_MEMBER")
+        @Suppress("INVISIBLE_MEMBER", "INVISIBLE_REFERENCE")
         ctx.delay.invokeOnTimeout(delayMillis, toSchedule, ctx).let { handle = it }
     }
     return disposable
