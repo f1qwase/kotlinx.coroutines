@@ -323,8 +323,7 @@ private class Removed(@JvmField val ref: Node) {
     override fun toString(): String = "Removed[$ref]"
 }
 
-@PublishedApi
-internal fun Any.unwrap(): Node = (this as? Removed)?.ref ?: this as Node
+private fun Any.unwrap(): Node = (this as? Removed)?.ref ?: this as Node
 
 /**
  * Head (sentinel) item of the linked list that is never removed.
