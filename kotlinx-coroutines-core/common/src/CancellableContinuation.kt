@@ -377,7 +377,7 @@ internal fun <T> getOrCreateCancellableContinuation(delegate: Continuation<T>): 
  */
 @InternalCoroutinesApi
 public fun CancellableContinuation<*>.disposeOnCancellation(handle: DisposableHandle): Unit =
-    invokeOnCancellation(handler = DisposeOnCancel(handle).asHandler)
+    invokeOnCancellation(handler = DisposeOnCancel(handle).asHandler2)
 
 private class DisposeOnCancel(private val handle: DisposableHandle) : CancelHandler() {
     override fun invoke(cause: Throwable?) = handle.dispose()

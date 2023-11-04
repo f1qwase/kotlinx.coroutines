@@ -87,7 +87,7 @@ private class AwaitAll<T>(private val deferreds: Array<out Deferred<T>>) {
             // it is already complete while handlers were being installed -- dispose them all
             disposer.disposeAll()
         } else {
-            cont.invokeOnCancellation(handler = disposer.asHandler)
+            cont.invokeOnCancellation(handler = disposer.asHandler2)
         }
     }
 

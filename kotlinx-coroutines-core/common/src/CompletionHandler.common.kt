@@ -38,7 +38,7 @@ internal expect abstract class CancelHandlerBase() {
     abstract fun invoke(cause: Throwable?)
 }
 
-internal expect val CancelHandlerBase.asHandler: CompletionHandler
+internal expect val CancelHandlerBase.asHandler2: CompletionHandler
 
 // :KLUDGE: We have to invoke a handler in platform-specific way via `invokeIt` extension,
 // because we play type tricks on Kotlin/JS and handler is not necessarily a function there

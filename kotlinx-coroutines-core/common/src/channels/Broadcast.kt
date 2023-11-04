@@ -148,11 +148,13 @@ private open class BroadcastCoroutine<E>(
         get() = this
 
     @Deprecated(level = DeprecationLevel.HIDDEN, message = "Since 1.2.0, binary compatibility with versions <= 1.1.x")
+    @Suppress("MULTIPLE_DEFAULTS_INHERITED_FROM_SUPERTYPES_DEPRECATION_ERROR")
     final override fun cancel(cause: Throwable?): Boolean {
         cancelInternal(cause ?: defaultCancellationException())
         return true
     }
 
+    @Suppress("MULTIPLE_DEFAULTS_INHERITED_FROM_SUPERTYPES_DEPRECATION_ERROR")
     final override fun cancel(cause: CancellationException?) {
         cancelInternal(cause ?: defaultCancellationException())
     }

@@ -6,7 +6,7 @@ package kotlinx.coroutines
 
 internal expect abstract class SchedulerTask internal constructor() : Runnable
 
-internal expect interface SchedulerTaskContext
+internal expect class SchedulerTaskContext
 
 @Suppress("EXTENSION_SHADOWED_BY_MEMBER")
 internal expect val SchedulerTask.taskContext: SchedulerTaskContext

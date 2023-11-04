@@ -38,10 +38,9 @@ internal object Unconfined : CoroutineDispatcher() {
 /**
  * Used to detect calls to [Unconfined.dispatch] from [yield] function.
  */
-@PublishedApi
-internal class YieldContext : AbstractCoroutineContextElement(Key) {
-    companion object Key : CoroutineContext.Key<YieldContext>
+public class YieldContext : AbstractCoroutineContextElement(Key) {
+    public companion object Key : CoroutineContext.Key<YieldContext>
 
     @JvmField
-    var dispatcherWasUnconfined = false
+    public var dispatcherWasUnconfined: Boolean = false
 }
