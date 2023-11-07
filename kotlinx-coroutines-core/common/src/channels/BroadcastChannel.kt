@@ -136,7 +136,7 @@ public class ConflatedBroadcastChannel<E> private constructor(
  *
  * This channel is created by `BroadcastChannel(capacity)` factory function invocation.
  */
-@Suppress("MULTIPLE_DEFAULTS_INHERITED_FROM_SUPERTYPES_WHEN_NO_EXPLICIT_OVERRIDE_DEPRECATION_ERROR")
+@Suppress("MULTIPLE_DEFAULTS_INHERITED_FROM_SUPERTYPES_DEPRECATION_WARNING", "MULTIPLE_DEFAULTS_INHERITED_FROM_SUPERTYPES_WHEN_NO_EXPLICIT_OVERRIDE_DEPRECATION_WARNING")
 internal class BroadcastChannelImpl<E>(
     /**
      * Buffer capacity; [Channel.CONFLATED] when this broadcast is conflated.
@@ -338,7 +338,7 @@ internal class BroadcastChannelImpl<E>(
         // in case `broadcast.cancel(..)` is called.
         subscribers = subscribers.filter { it.hasElements() }
         // Delegate to the parent implementation.
-        super<BufferedChannel>.close(cause)
+        super.close(cause)
     }
 
     override fun cancelImpl(cause: Throwable?): Boolean = lock.withLock { // protected by lock
