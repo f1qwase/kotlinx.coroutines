@@ -51,6 +51,7 @@ public object DebugProbes {
      */
     public var sanitizeStackTraces: Boolean
         get() = DebugProbesImpl.sanitizeStackTraces
+        @Suppress("INVISIBLE_SETTER")
         set(value) {
             DebugProbesImpl.sanitizeStackTraces = value
         }
@@ -66,6 +67,7 @@ public object DebugProbes {
      */
     public var enableCreationStackTraces: Boolean
         get() = DebugProbesImpl.enableCreationStackTraces
+        @Suppress("INVISIBLE_SETTER")
         set(value) {
             DebugProbesImpl.enableCreationStackTraces = value
         }
@@ -82,6 +84,7 @@ public object DebugProbes {
      */
     public var ignoreCoroutinesWithEmptyContext: Boolean
         get() = DebugProbesImpl.ignoreCoroutinesWithEmptyContext
+        @Suppress("INVISIBLE_SETTER")
         set(value) {
             DebugProbesImpl.ignoreCoroutinesWithEmptyContext = value
         }
