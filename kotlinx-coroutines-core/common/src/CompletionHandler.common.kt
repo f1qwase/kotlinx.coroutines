@@ -31,7 +31,7 @@ internal expect abstract class CompletionHandlerBase() : LockFreeLinkedListNode 
     abstract fun invoke(cause: Throwable?)
 }
 
-internal expect val CompletionHandlerBase.asHandler: CompletionHandler
+internal expect val CompletionHandlerBase.asHandler1: CompletionHandler
 
 // More compact version of CompletionHandlerBase for CancellableContinuation with same workaround for JS
 internal expect abstract class CancelHandlerBase() {

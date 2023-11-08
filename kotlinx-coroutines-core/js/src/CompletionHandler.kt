@@ -12,7 +12,7 @@ internal actual abstract class CompletionHandlerBase : LinkedListNode() {
 }
 
 @Suppress("UnsafeCastFromDynamic")
-internal actual inline val CompletionHandlerBase.asHandler: CompletionHandler get() = asDynamic()
+internal actual inline val CompletionHandlerBase.asHandler1: CompletionHandler get() = asDynamic()
 
 internal actual abstract class CancelHandlerBase {
     @JsName("invoke")

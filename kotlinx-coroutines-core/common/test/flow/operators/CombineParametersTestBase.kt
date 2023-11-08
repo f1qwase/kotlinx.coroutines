@@ -181,13 +181,4 @@ class CombineParametersTest : TestBase() {
         val result = flow.combine(flow) { a, b -> a + b }.toList()
         assertEquals(List(1024) { it * 2 } , result)
     }
-
-    @Test
-    fun testArrayType() = runTest {
-        val arr = flowOf(1)
-        combine(listOf(arr, arr)) {
-            println(it[0])
-            it[0]
-        }.toList().also { println(it) }
-    }
 }

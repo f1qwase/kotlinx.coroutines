@@ -558,7 +558,7 @@ public open class JobSupport constructor(active: Boolean) : Job, ChildJob, Paren
 
     private suspend fun joinSuspend() = suspendCancellableCoroutine<Unit> { cont ->
         // We have to invoke join() handler only on cancellation, on completion we will be resumed regularly without handlers
-        cont.disposeOnCancellation(invokeOnCompletion(handler = ResumeOnCompletion(cont).asHandler))
+        cont.disposeOnCancellation(invokeOnCompletion(handler = ResumeOnCompletion(cont).asHandler1))
     }
 
     @Suppress("UNCHECKED_CAST")
@@ -574,7 +574,7 @@ public open class JobSupport constructor(active: Boolean) : Job, ChildJob, Paren
             select.selectInRegistrationPhase(Unit)
             return
         }
-        val disposableHandle = invokeOnCompletion(SelectOnJoinCompletionHandler(select).asHandler)
+        val disposableHandle = invokeOnCompletion(SelectOnJoinCompletionHandler(select).asHandler1)
         select.disposeOnCompletion(disposableHandle)
     }
 
@@ -921,7 +921,7 @@ public open class JobSupport constructor(active: Boolean) : Job, ChildJob, Paren
     private tailrec fun tryWaitForChild(state: Finishing, child: ChildHandleNode, proposedUpdate: Any?): Boolean {
         val handle = child.childJob.invokeOnCompletion(
             invokeImmediately = false,
-            handler = ChildCompletion(this, state, child, proposedUpdate).asHandler
+            handler = ChildCompletion(this, state, child, proposedUpdate).asHandler1
         )
         if (handle !== NonDisposableHandle) return true // child is not complete and we've started waiting for it
         val nextChild = child.nextChild() ?: return false
@@ -971,7 +971,7 @@ public open class JobSupport constructor(active: Boolean) : Job, ChildJob, Paren
          * If child is attached when the job is already being cancelled, such child will receive immediate notification on
          * cancellation, but parent *will* wait for that child before completion and will handle its exception.
          */
-        return invokeOnCompletion(onCancelling = true, handler = ChildHandleNode(child).asHandler) as ChildHandle
+        return invokeOnCompletion(onCancelling = true, handler = ChildHandleNode(child).asHandler1) as ChildHandle
     }
 
     /**
@@ -1234,7 +1234,7 @@ public open class JobSupport constructor(active: Boolean) : Job, ChildJob, Paren
         val cont = AwaitContinuation(uCont.intercepted(), this)
         // we are mimicking suspendCancellableCoroutine here and call initCancellability, too.
         cont.initCancellability()
-        cont.disposeOnCancellation(invokeOnCompletion(ResumeAwaitOnCompletion(cont).asHandler))
+        cont.disposeOnCancellation(invokeOnCompletion(ResumeAwaitOnCompletion(cont).asHandler1))
         cont.getResult()
     }
 
@@ -1256,7 +1256,7 @@ public open class JobSupport constructor(active: Boolean) : Job, ChildJob, Paren
             }
             if (startInternal(state) >= 0) break // break unless needs to retry
         }
-        val disposableHandle = invokeOnCompletion(SelectOnAwaitCompletionHandler(select).asHandler)
+        val disposableHandle = invokeOnCompletion(SelectOnAwaitCompletionHandler(select).asHandler1)
         select.disposeOnCompletion(disposableHandle)
     }
 

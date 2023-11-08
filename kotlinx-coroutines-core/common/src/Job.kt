@@ -491,7 +491,7 @@ public interface ChildHandle : DisposableHandle {
  * ```
  */
 internal fun Job.disposeOnCompletion(handle: DisposableHandle): DisposableHandle =
-    invokeOnCompletion(handler = DisposeOnCompletion(handle).asHandler)
+    invokeOnCompletion(handler = DisposeOnCompletion(handle).asHandler1)
 
 /**
  * Cancels the job and suspends the invoking coroutine until the cancelled job is complete.

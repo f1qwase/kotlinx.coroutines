@@ -10,7 +10,7 @@ internal actual abstract class CompletionHandlerBase actual constructor() : Lock
     actual abstract override fun invoke(cause: Throwable?)
 }
 
-internal actual inline val CompletionHandlerBase.asHandler: CompletionHandler get() = this
+internal actual inline val CompletionHandlerBase.asHandler1: CompletionHandler get() = this
 
 internal actual abstract class CancelHandlerBase actual constructor() : CompletionHandler {
     actual abstract override fun invoke(cause: Throwable?)

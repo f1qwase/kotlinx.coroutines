@@ -347,7 +347,7 @@ internal open class CancellableContinuationImpl<in T>(
         // Install the handle
         val handle = parent.invokeOnCompletion(
             onCancelling = true,
-            handler = ChildContinuation(this).asHandler
+            handler = ChildContinuation(this).asHandler1
         )
         _parentHandle.compareAndSet(null, handle)
         return handle
